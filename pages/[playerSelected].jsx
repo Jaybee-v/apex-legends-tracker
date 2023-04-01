@@ -4,14 +4,16 @@ import Navbar from "@/components/Navbar"
 import axios from "axios"
 import PlayerGlobalCard from "@/components/Player/PlayerGlobalCard"
 import PlayerLastGames from "@/components/Player/PlayerLastGames"
+import PlayerLegendsCard from "@/components/Player/PlayerLegendsCard"
 
 const API_KEY = "c640d2273769ec2207cce32105d260f9"
 
 const Player = () => {
-    const [data, setData] = useState([])
+    const [total, setTotal] = useState([])
     const [global, setGlobal] = useState([])
     const [globalRank, setGlobalRank] = useState({})
     const [legends, setLegends] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const getPlayer = async () => {
@@ -20,14 +22,18 @@ const Player = () => {
             const res = await axios.get(
                 `https://api.mozambiquehe.re/bridge?auth=${API_KEY}&player=${player}&platform=${platform}`
             )
+            const result = res.data
             console.log("ICI PAGE PLAYER", res.data)
-            setGlobal(res.data.global)
-            setGlobalRank(res.data.global.rank)
-            setLegends(res.data.legends.all)
-            setData(res.data.total)
+            setGlobal(result.global)
+            setGlobalRank(result.global.rank)
+            setLegends(result.legends.all)
+            setTotal(result.total)
+            setLoading(false)
         }
         getPlayer()
     }, [])
+
+    console.log("LEGENDS", total)
     const router = useRouter()
     const { playerSelected } = router.query
     return (
@@ -35,11 +41,13 @@ const Player = () => {
             <Navbar />
             <PlayerGlobalCard
                 global={global}
-                data={data}
+                total={total}
                 globalRank={globalRank}
                 legends={legends}
+                loading={loading}
             />
-            <PlayerLastGames global={global} />
+            <PlayerLegendsCard legends={legends} />
+            {/* <PlayerLastGames global={global} /> */}
         </>
     )
 }

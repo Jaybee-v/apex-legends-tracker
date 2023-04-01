@@ -30,6 +30,19 @@
         @apply shadow-xl shadow-gray-900 hover:shadow-gray-700 bg-[#d63031] hover:bg-[#8b1d1d]  hover:text-[#a0a8aa] duration-300 text-[#2d3436] font-semibold ease-in;
     }
 }
+.loading {
+    animation-name: loading-spinner;
+    animation-duration: 3s;
+}
+
+@keyframes loading-spinner {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(300deg);
+    }
+}
 
 /* .nameInLogo {
     position: absolute;

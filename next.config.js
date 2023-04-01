@@ -2,7 +2,14 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ["apexlegendsstatus.com"],
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "api.mozambiquehe.re",
+                port: "",
+                pathname: "/assets/**",
+            },
+        ],
     },
 }
 

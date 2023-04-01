@@ -20,9 +20,17 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navbar />
-            <InputPlayerSearch />
+            <div
+                className="border p-6 rounded-3xl mx-auto mt-10"
+                style={{ width: "fit-content" }}
+            >
+                <p className="mb-5">
+                    Recherchez un joueur dans la base de données:
+                </p>
+                <InputPlayerSearch />
+            </div>
             {/* <Leaderboard /> */}
-            <MapRotation />
+            {/* <MapRotation /> */}
         </>
     )
 }

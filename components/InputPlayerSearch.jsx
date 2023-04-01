@@ -70,45 +70,36 @@ const InputPlayerSearch = () => {
         router.push(`/${name}`)
     }
     return (
-        <div
-            className="border p-6 rounded-3xl mx-auto mt-10"
-            style={{ width: "fit-content" }}
-        >
-            <p className="mb-5">
-                Recherchez un joueur dans la base de données:
-            </p>
-            <form onSubmit={handleSubmit} className="flex w-[60%] m-auto">
-                <input
-                    type="text"
-                    placeholder="Nom de joueur en ligne..."
-                    onChange={handleChangeName}
-                    className="w-[300px] p-2 rounded"
-                />
+        <form onSubmit={handleSubmit} className="flex">
+            <input
+                type="text"
+                placeholder="Nom de joueur en ligne..."
+                onChange={handleChangeName}
+                className="w-[300px] p-2 rounded"
+            />
 
-                <Select
-                    placeholder="Plateforme?"
-                    value={selectedOption}
-                    options={plateforms}
-                    onChange={handleChangePlateform}
-                    className="ms-3"
-                    getOptionLabel={(e) => (
-                        <div
-                            className="p-2"
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                width: "150px",
-                            }}
-                        >
-                            {e.icon}
-                        </div>
-                    )}
-                />
-                <button className="border-none rounded px-3 ms-3">
-                    Rechercher
-                </button>
-            </form>
-        </div>
+            <Select
+                value={selectedOption}
+                options={plateforms}
+                onChange={handleChangePlateform}
+                className="ms-3"
+                getOptionLabel={(e) => (
+                    <div
+                        className="p-2"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            width: "50px",
+                        }}
+                    >
+                        {e.icon}
+                    </div>
+                )}
+            />
+            <button className="border-none rounded px-3 ms-3">
+                Rechercher
+            </button>
+        </form>
     )
 }
 
