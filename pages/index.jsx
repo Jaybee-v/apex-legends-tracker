@@ -3,6 +3,8 @@ import Leaderboard from "@/components/Leaderboard"
 import Navbar from "@/components/Navbar"
 import InputPlayerSearch from "@/components/InputPlayerSearch"
 import MapRotation from "@/components/MapRotation"
+import Footer from "@/components/Footer"
+import Predators from "@/components/Predators"
 
 export default function Home() {
     return (
@@ -21,16 +23,16 @@ export default function Home() {
             </Head>
             <Navbar />
             <div
-                className="border p-6 rounded-3xl mx-auto mt-10"
+                className="bg-[#2c2c2c] p-10 rounded-3xl mx-auto mt-10"
                 style={{ width: "fit-content" }}
             >
-                <p className="mb-5">
-                    Recherchez un joueur dans la base de données:
-                </p>
+                <p className="mb-5 font-semibold">Recherchez un joueur:</p>
                 <InputPlayerSearch />
             </div>
             {/* <Leaderboard /> */}
-            {/* <MapRotation /> */}
+            <Predators />
+            <MapRotation />
+            <Footer />
         </>
     )
 }

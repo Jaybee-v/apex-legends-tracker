@@ -5,6 +5,7 @@ import axios from "axios"
 import PlayerGlobalCard from "@/components/Player/PlayerGlobalCard"
 import PlayerLastGames from "@/components/Player/PlayerLastGames"
 import PlayerLegendsCard from "@/components/Player/PlayerLegendsCard"
+import Footer from "@/components/Footer"
 
 const API_KEY = "c640d2273769ec2207cce32105d260f9"
 
@@ -13,6 +14,7 @@ const Player = () => {
     const [global, setGlobal] = useState([])
     const [globalRank, setGlobalRank] = useState({})
     const [legends, setLegends] = useState([])
+    const [realTime, setRealTime] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -28,6 +30,7 @@ const Player = () => {
             setGlobalRank(result.global.rank)
             setLegends(result.legends.all)
             setTotal(result.total)
+            setRealTime(result.realtime)
             setLoading(false)
         }
         getPlayer()
@@ -37,18 +40,21 @@ const Player = () => {
     const router = useRouter()
     const { playerSelected } = router.query
     return (
-        <>
+        <div className="mb-10">
             <Navbar />
-            <PlayerGlobalCard
-                global={global}
-                total={total}
-                globalRank={globalRank}
-                legends={legends}
-                loading={loading}
-            />
-            <PlayerLegendsCard legends={legends} />
-            {/* <PlayerLastGames global={global} /> */}
-        </>
+            <div className="flex justify-evenly items-center">
+                <PlayerGlobalCard
+                    global={global}
+                    total={total}
+                    realtime={realTime}
+                    globalRank={globalRank}
+                    loading={loading}
+                />
+                <PlayerLegendsCard legends={legends} loading={loading} />
+            </div>
+            <PlayerLastGames global={global} />
+            <Footer />
+        </div>
     )
 }
 

@@ -3,8 +3,6 @@ import { useRouter } from "next/router"
 import Select from "react-select"
 import axios from "axios"
 
-const API_KEY = "c640d2273769ec2207cce32105d260f9"
-
 const plateforms = [
     {
         plateform: "PC",
@@ -68,7 +66,12 @@ const InputPlayerSearch = () => {
         )
 
         router.push(`/${name}`)
+
+        if (document.location.href !== `http://localhost:3000/${name}`) {
+            document.location.href = `/${name}`
+        }
     }
+
     return (
         <form onSubmit={handleSubmit} className="flex">
             <input

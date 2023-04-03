@@ -23,7 +23,7 @@ function News() {
     return (
         <div>
             <Navbar />
-            <NewsItem items={items} />
+            {items ? <NewsItem items={items} /> : null}
         </div>
     )
 }
